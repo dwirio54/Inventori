@@ -1,0 +1,2 @@
+# Inventori
+Tugas Inventori
