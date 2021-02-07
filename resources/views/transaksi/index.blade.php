@@ -22,35 +22,18 @@
                     <th>Kode Barang</th>
                     <th>Nama Supplier</th>
                     <th>Nama Barang</th>
-                    <th>Quantity</th>
                     <th>Tgl Transaksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>NDT-22-2021-124</td>
-                    <td>PT Nasi Daging Tiren</td>
-                    <td>Nasi Ayam Tiren</td>
-                    <td>20</td>
-                    <td>12-12-1212
-                   
-                </tr>
-                <tr>
-                    <td>CD-441-413-89</td>
-                    <td>PT Redkt</td>
-                    <td>CD CP2077</td>
-                    <td>10</td>
-                    <td>12-12-1212
-                    
-                </tr>
-                <tr>
-                    <td>RUSH-324-226-11</td>
-                    <td>PT RUSH.ID</td>
-                    <td>Baju</td>
-                    <td>20</td>
-                    <td>12-12-1212
-                   
-                </tr>
+            @foreach ($transactions as $transaction) 
+                        <tr>
+                            <td>{{$transaction->kode_transaksi }}</td>
+                            <td>{{$transaction->suplier->nama}}</td>
+                            <td>{{$transaction->barang->nama_barang}}</td>
+                            <td>{{$transaction->created_at->toDateString()}}</td>
+                        </tr>
+                        @endforeach
             </tbody>
         </table>    
     </div>

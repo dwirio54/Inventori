@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Suplier;
 
+use App\Transaction;
 use App\Suplier;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

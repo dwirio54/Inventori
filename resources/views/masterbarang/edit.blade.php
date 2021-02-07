@@ -6,21 +6,23 @@
          <div class="col-md-6">
                 <div class="card"> 
                       <div class="card-body">
-                        <from action="" method="post">
-                           <div class="from-group">
+                        <form action="{{route('master-barang.update', $barang->id)}}" method="post">
+                           @csrf
+                           @method('PATCH')
+                           <div class="form-group">
                                <label for="kode_barang">Kode Barang</label>
-                               <input type="text" name="kode_barang" id="kode_barang" class="form-control">
+                               <input type="text" name="kode_barang" id="kode_barang" value="{{$barang->kode_barang}}" class="form-control">
                              </div>
-                             <div class="from-group">
+                             <div class="form-group">
                                <label for="nama_barang">Nama Barang</label>
-                               <input type="text" name="nama_barang" id="nama_barang" class="form-control">
+                               <input type="text" name="nama_barang" id="nama_barang" value="{{$barang->nama_barang}}" class="form-control">
                             </div>
-                            <div class="from-group">
-                               <label for="nama_barang">Supplier</label>
-                              <select name="" id="" class="form-control">
-
-                               <option value="">Pilih suplier</option>
-
+                            <div class="form-group">
+                               <label for="nama_barang">Suplier</label>
+                              <select name="suplier_id" id="suplier_id" value="{{$barang->suplier_id}}" class="form-control">
+                              @foreach ($supliers as $suplier)
+                               <option value="{{$suplier->id}}">{{$suplier->name}}</option>
+                               @endforeach
                                </select>
                             </div>
                           <div class="from-group">

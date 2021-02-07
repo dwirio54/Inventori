@@ -6,7 +6,8 @@
          <div class="col-md-6">
                 <div class="card"> 
                       <div class="card-body">
-                        <from action="" method="post">
+                        <form action="{{route('master-barang.store')}}" method="post">
+                            @csrf 
                            <div class="from-group">
                                <label for="kode_barang">Kode Barang</label>
                                <input type="text" name="kode_barang" id="kode_barang" class="form-control">
@@ -15,12 +16,14 @@
                                <label for="nama_barang">Nama Barang</label>
                                <input type="text" name="nama_barang" id="nama_barang" class="form-control">
                             </div>
-                            <div class="from-group">
-                               <label for="nama_barang">Supplier</label>
-                              <select name="" id="" class="form-control">
+                            <div class="form-group">
+                               <label for="suplier_id">Suplier</label>
+                              <select name="suplier_id" id="suplier_id" class="form-control">
 
                                <option value="">Pilih suplier</option>
-
+                                @foreach ($supliers as $suplier)
+                               <option value="{{$suplier->id}}">{{$suplier->name}}</option>
+                               @endforeach
                                </select>
                             </div>
                           <div class="form-group">
