@@ -33,8 +33,6 @@ class BarangKeluarController extends Controller
             'barang_id' => $request->barang_id,
             'quantity' => $request->quantity,
         ]);
-        flash()->success('Transaksi keluar berhasil di Buat');
-        return redirect()->back();
         
         if ($transaksi->save()) {
             $barang = Barang::findOrFail($transaksi->barang_id);
@@ -44,6 +42,8 @@ class BarangKeluarController extends Controller
                 'quantity' => $hitung,
             ]);
         };
+        flash()->success('Transaksi keluar berhasil di Buat');
+        return redirect()->back();
 
     }
 }

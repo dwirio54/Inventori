@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSupliersTable extends Migration
+class CreateProfiles extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateSupliersTable extends Migration
      */
     public function up()
     {
-        Schema::create('supliers', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('alamat');
-            $table->string('kode_suplier');
-            $table->string('email')->unique();
-            $table->string('phone');
+            $table->string('name');
+            $table->string('usia')->unique();
+            $table->string('tempat_lahir');
+            $table->string('tanggal_lahir');
+            $table->string('jenis_kelamin');
+            $table->string('hobby');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateSupliersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supliers');
+        Schema::dropIfExists('profiles');
     }
 }

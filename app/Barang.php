@@ -10,13 +10,25 @@ use App\Transaction;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Alfa6661\AutoNumber\AutoNumberTrait;
+
 class Barang extends Model
 {
+    use AutoNumberTrait;
+
     protected $table ='barangs';
+
     protected $guarded = [];
     
-    public function suplier()
+    public function getAutoNumberOptions()
     {
-        return $this->belongsTo(Suplier::class);
+        return [
+            'kode_barang' => [
+                'format' => function () {
+                    return 'TRANS/' . date('Ymd') . '/?';
+                }, 'length' => 5
+            ]
+
+        ];
     }
 }

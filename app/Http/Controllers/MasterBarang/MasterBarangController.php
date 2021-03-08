@@ -4,11 +4,19 @@ namespace App\Http\Controllers\MasterBarang;
 
 use App\Barang;
 use App\Suplier;
+use App\Transactions;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class MasterBarangController extends Controller
 {
+    public function index()
+    {
+        $barangs = \App\Barang::all();
+
+        return view('masterbarang.index', compact('barangs'));
+    }
+
     public function create()
     {
        $supliers = suplier::all();
@@ -16,16 +24,19 @@ class MasterBarangController extends Controller
         return view('masterbarang.create', compact('supliers'));
     }
     
-    public function show()
+    public function show($id)
     {
-        return view('masterbarang.detail');
+        $barang = Barang::findOrFail($id);
+
+
+        return view('masterbarang.detail', compact('barang'));
     }
+
 
     public function store(Request $request)
     {
         $suplier = Barang::create([
             'suplier_id' => $request->suplier_id,
-            'kode_barang' => $request->kode_barang,
             'nama_barang' => $request->nama_barang,
             'quantity' => $request->quantity,
         ]);
@@ -58,6 +69,7 @@ class MasterBarangController extends Controller
         return redirect(route('master-barang'));
     }
 
+    
     public function destroy($id)
     {
         $barang = Barang::findOrFail($id);
@@ -69,4 +81,5 @@ class MasterBarangController extends Controller
         return redirect()->back();
 
     }
+
 }

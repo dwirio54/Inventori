@@ -21,7 +21,7 @@
                 <tr>
                     <th>Kode Barang</th>
                     <th>Nama Supplier</th>
-                    <th>Nama Barang</th>
+                    <th>Kode Barang</th>
                     <th>Tgl Transaksi</th>
                 </tr>
             </thead>

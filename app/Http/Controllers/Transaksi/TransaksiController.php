@@ -14,6 +14,11 @@ use App\Http\Controllers\Controller;
 
 class TransaksiController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function index()
     {
         $transactions = Transaction::with('barang', 'suplier')->get();
